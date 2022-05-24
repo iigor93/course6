@@ -8,8 +8,18 @@ User = get_user_model()
 
 
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
-    pass
+    class Meta:
+        model = User
+        fields = ['email', 'password', 'role', 'first_name', 'last_name']
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = User
+        fields = ['email', 'role', 'first_name', 'last_name', 'phone', 'image']
+        
+
+class UserForAdSerialiser(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
